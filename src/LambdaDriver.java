@@ -1,5 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
+/* 
+ * Programmer: Wes Laity
+ * Date: 23 Apr 2019
+ * Desc: Demonstration of Lambdas for the APP club.
+ */
 
 public class LambdaDriver {
 
@@ -13,27 +16,25 @@ public class LambdaDriver {
 		MyFunction multi = (int x, int y) -> (x * y);
 		MyFunction div = (int x, int y) -> (x / y);
 
-		int n1 = 15;
-		int n2 = 5;
-
-		System.out.println(add.operation(n1, n2));
-		System.out.println(sub.operation(n1, n2));
-		System.out.println(multi.operation(n1, n2));
-		System.out.println(div.operation(n1, n2));
+		testFunction(add);
+		testFunction(sub);
+		testFunction(multi);
+		testFunction(div);
 		
-		MyFunction f = new MyFunction() {
+		MyFunction pow = new MyFunction() {
 			
 			@Override
 			public int operation(int x, int y) {
-				return x + y;
+				return (int)Math.pow(x, y);
 			}
 		};
+		testFunction(pow);
 		
-		testFunction((x, y) -> x / y);
+		testFunction((x, y) -> x + y);
 	}
 
 	public static void testFunction(MyFunction f) {
-		int x = 10;
+		int x = 15;
 		int y = 5;
 		System.out.printf("f(%d, %d) = %d\n", x, y, f.operation(x, y));
 	}
